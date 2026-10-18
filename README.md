@@ -16,7 +16,7 @@ App de treino de academia que roda no navegador do celular e do computador, e po
 ## Publicar no GitHub Pages
 
 1. Crie um repositório novo no GitHub (por exemplo `forja-de-treino`), público.
-2. Envie **todo o conteúdo desta pasta** para a raiz do repositório (no site do GitHub: *Add file → Upload files* e arraste os arquivos e pastas).
+2. Envie **todo o conteúdo desta pasta** para a raiz do repositório (no site do GitHub: *Add file → Upload files* e arraste os arquivos e a pasta `icons`). O `index.html` precisa ficar na raiz, não dentro de outra pasta.
 3. No repositório, vá em **Settings → Pages**, em *Source* escolha **Deploy from a branch**, branch **main**, pasta **/ (root)** e salve.
 4. Em 1 ou 2 minutos o app estará em `https://SEU-USUARIO.github.io/forja-de-treino/`.
 
@@ -39,12 +39,9 @@ A chave fica salva apenas no navegador do aparelho. O botão **Buscar atuais** l
 ## Estrutura
 
 ```
-index.html              casca do app
+index.html              o app inteiro (estilos, código e fotos embutidos)
 manifest.webmanifest    instalação na tela de início
 sw.js                   cache para funcionar offline
-assets/app.css          estilos
-assets/js/              código (sem dependências, sem etapa de build)
-assets/ex/              fotos de execução (WebP, 2 por exercício)
 icons/                  ícones do app
 ```
 

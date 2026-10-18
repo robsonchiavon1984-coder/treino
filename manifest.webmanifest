@@ -2,7 +2,7 @@
   "name": "Forja de Treino",
   "short_name": "Forja",
   "lang": "pt-BR",
-  "start_url": "./#/hoje",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#0C0C0E",
