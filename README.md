@@ -1,51 +1,60 @@
 # Forja de Treino
 
-App de treino de academia que roda no navegador do celular e do computador, e pode ser instalado na tela de início como um aplicativo.
+App de treino de academia que roda no navegador, no computador e no celular. Não tem servidor, cadastro nem anúncio: os dados ficam no seu aparelho.
 
-- **140 exercícios com fotos reais de execução** (posição inicial e final), músculos trabalhados, passo a passo, dicas e erros comuns
-- **Treinos totalmente editáveis**: planos divididos em dias, séries individuais (aquecimento, normal, drop, falha) com repetições, carga e descanso próprios, técnica, cadência, RIR, bi-set e observações
-- **Personal IA** (Gemini ou Claude) especialista em hipertrofia, emagrecimento e mobilidade:
-  - **Avaliação por fotos** → análise de proporções e postura → treino montado → começar na hora
-  - **Revisão do treino** cruzando a frequência real, a evolução das cargas e fotos novas → plano novo com a lista do que mudou
-  - Conversa livre com o personal
-  - Funciona com chave de API ou no modo copiar e colar (sem chave, sem custo)
-- **Modo treino**: registro de séries e cargas, cronômetro de descanso com ±15 s, tela sempre ligada, cargas levadas de volta ao plano
-- **Progresso**: raio-x da frequência, evolução de carga por exercício, volume semanal, medidas corporais e fotos antes/depois
-- **Funciona offline** depois da primeira visita · dados guardados só no seu aparelho · backup em arquivo
+## O que ele faz
+
+- **A forja.** Sua constância vira temperatura. Cada treino aquece, cada dia parado esfria 10%. A faixa ideal fica entre 950 e 1250 °C, a mesma em que o aço é forjado.
+- **140 exercícios com foto de execução**, mapa dos músculos trabalhados, passo a passo, dicas e erros comuns. Dá para criar os seus, com foto.
+- **Planos do seu jeito.** Gere um plano pelo perfil em um toque, escolha um dos 10 programas prontos, peça ao coach ou monte do zero. Tudo é editável: séries, repetições, carga, descanso, cadência, técnica e bi-set.
+- **Modo treino.** Um exercício em foco, sugestão da carga do dia, cronômetro de descanso, recordes detectados na hora e resumo com imagem para compartilhar.
+- **Nível, 30 conquistas e um desafio novo por semana.**
+- **Coach com IA.** Conversa com contexto do seu histórico, treino do dia sob medida, avaliação por fotos do corpo e revisão do plano pela sua frequência real.
+- **Evolução.** Recordes e 1RM estimado por exercício, séries semanais por grupo muscular, calendário de treinos, medidas e fotos com antes e depois.
+- **Ferramentas.** Treino expresso, cronômetro de intervalos, calculadora de anilhas e de 1RM.
+- **Backup** em um arquivo, para levar os dados de um aparelho para outro.
 
 ## Publicar no GitHub Pages
 
-1. Crie um repositório novo no GitHub (por exemplo `forja-de-treino`), público.
-2. Envie **todo o conteúdo desta pasta** para a raiz do repositório (no site do GitHub: *Add file → Upload files* e arraste os arquivos e a pasta `icons`). O `index.html` precisa ficar na raiz, não dentro de outra pasta.
-3. No repositório, vá em **Settings → Pages**, em *Source* escolha **Deploy from a branch**, branch **main**, pasta **/ (root)** e salve.
-4. Em 1 ou 2 minutos o app estará em `https://SEU-USUARIO.github.io/forja-de-treino/`.
+1. Crie um repositório público (por exemplo, `forja-de-treino`).
+2. Em **Add file → Upload files**, envie todo o conteúdo desta pasta: `index.html`, `manifest.webmanifest`, `sw.js`, `.nojekyll`, `README.md`, `LICENSE` e a pasta `icons`. O `index.html` precisa ficar na raiz do repositório.
+3. Em **Settings → Pages**, escolha **Deploy from a branch**, branch **main**, pasta **/ (root)** e salve.
+4. Em um ou dois minutos o app abre em `https://SEU-USUARIO.github.io/forja-de-treino/`.
+
+Para atualizar, envie o `index.html` e o `sw.js` novos por cima dos antigos. Seus dados não são afetados.
 
 ## Instalar no celular
 
-- **iPhone**: abra o endereço no Safari → botão Compartilhar → **Adicionar à Tela de Início**.
-- **Android**: abra no Chrome → menu ⋮ → **Instalar app**.
+- **iPhone:** abra o endereço no Safari, toque em Compartilhar e em **Adicionar à Tela de Início**.
+- **Android:** abra no Chrome, menu ⋮ e **Instalar app**.
 
-## Personal IA
+Depois da primeira abertura o app funciona sem internet. Só o coach com IA precisa de conexão.
 
-Em *Personal → Conectar*, cole uma chave de API:
+## Coach com IA e a sua chave
 
-- Gemini: crie grátis em [aistudio.google.com](https://aistudio.google.com) → *Get API key*
-- Claude: [console.anthropic.com](https://console.anthropic.com) → *API Keys*
+O coach funciona de três formas:
 
-A chave fica salva apenas no navegador do aparelho. O botão **Buscar atuais** lista os modelos que a sua chave enxerga hoje. Sem chave, o app gera o pedido completo para você colar no Gemini ou no Claude e lê a resposta de volta.
+1. **Dentro do Claude**, quando o app é aberto como página publicada lá: usa a sua conta, sem chave.
+2. **Com chave de API** do Google Gemini ou da Anthropic, digitada em Coach → Opções. A chave fica guardada só no navegador do seu aparelho e não entra no backup.
+3. **Copiando e colando**: o app monta o pedido, você cola em qualquer assistente e devolve a resposta.
 
-> Não coloque sua chave de API em nenhum arquivo do repositório.
+**Nunca coloque sua chave de API em nenhum arquivo deste repositório.** Ele é público.
+
+## Seus dados
+
+Planos, histórico, medidas e conquistas ficam no armazenamento do navegador. As fotos do corpo ficam no IndexedDB do aparelho e só saem dele quando você pede uma avaliação ao coach. Use **Ajustes → Exportar backup** de vez em quando: limpar os dados do navegador apaga tudo.
 
 ## Estrutura
 
 ```
-index.html              o app inteiro (estilos, código e fotos embutidos)
+index.html              o app inteiro: estilos, código, fontes e fotos embutidos
 manifest.webmanifest    instalação na tela de início
-sw.js                   cache para funcionar offline
+sw.js                   cache para funcionar sem internet
 icons/                  ícones do app
 ```
 
 ## Créditos
 
-Fotos de execução: [Free Exercise DB](https://github.com/yuhonas/free-exercise-db), em domínio público (Unlicense).
-Este app não substitui acompanhamento de profissional de educação física ou médico.
+Fotos de execução: [Free Exercise DB](https://github.com/yuhonas/free-exercise-db), em domínio público (Unlicense). Fontes: Big Shoulders e Figtree (SIL Open Font License).
+
+Este app não substitui o acompanhamento de um profissional de educação física ou de um médico.
